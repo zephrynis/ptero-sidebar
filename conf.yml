@@ -1,0 +1,37 @@
+info:
+  name: "Sidebar"
+  identifier: "sidebar"
+  description: "A basic sidebar"
+  flags: ""
+  version: "1.0"
+  target: "beta-2024-12"
+  author: "Zephrynis"
+  icon: ""
+  website: ""
+
+admin:
+  view: "view.blade.php"
+  controller: ""
+  css: ""
+  wrapper: ""
+
+dashboard:
+  css: "root.css"
+  wrapper: ""
+  components: ""
+
+data:
+  directory: ""
+  public: ""
+  console: ""
+
+requests:
+  views: ""
+  app: ""
+  routers:
+    application: ""
+    client: ""
+    web: ""
+
+database:
+  migrations: ""

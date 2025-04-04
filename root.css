@@ -1,0 +1,48 @@
+.App___StyledDiv-sc-2l91w7-0.fnfeQw {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#NavigationBar {
+  width: 100%;
+  order: -4;
+}
+
+#SubNavigation {
+  width: 200px;
+  min-height: calc(100vh - 56px);
+  order: -2;
+}
+
+#SubNavigation > div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.App___StyledDiv-sc-2l91w7-0.fnfeQw > .Fade__Container-sc-1p0gm8n-0.hcgQjy {
+  flex: 100;
+  order: -1;
+}
+
+.jZPsWO > div > a:not(:first-of-type) {
+  margin-left: 0 !important;
+}
+
+.jZPsWO > div > a.active {
+  box-shadow: rgb(8, 145, 178) 2px 0px inset !important;
+}
+
+.jZPsWO > div > a:active {
+  box-shadow: rgb(8, 145, 178) 2px 0px inset !important;
+}
+
+.jZPsWO > div > a {
+  width: 100%;
+  height: 38px;
+}
+
+.WebsocketHandler___StyledDiv-sc-s2kfyl-0.hKWSwf {
+  width: 100%;
+  order: -3;
+}
