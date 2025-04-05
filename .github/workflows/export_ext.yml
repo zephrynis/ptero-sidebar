@@ -1,0 +1,35 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Extract version from conf.yml
+        id: get_version
+        run: |
+          VERSION=$(sed -n 's/^[[:space:]]*version:[[:space:]]*//p' conf.yml | head -n 1)
+          echo "Detected version: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "::set-output name=VERSION::$VERSION"
+
+      - name: Create zip of project files
+        run: |
+          zip -r sidebar-${{ env.VERSION }}.blueprint . -x "*.git*"
+
+      - name: Create GitHub Release and Upload Asset
+        uses: ncipollo/release-action@v1
+        with:
+          tag: "v${{ env.VERSION }}"
+          release_name: "Release v${{ env.VERSION }}"
+          body: "Automated release based on version ${{ env.VERSION }}"
+          draft: false
+          prerelease: false
+          assets: sidebar-${{ env.VERSION }}.blueprint
