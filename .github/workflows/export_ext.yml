@@ -18,6 +18,8 @@ jobs:
         id: get_version
         run: |
           VERSION=$(sed -n 's/^[[:space:]]*version:[[:space:]]*//p' conf.yml | head -n 1)
+          VERSION=${VERSION//\"/}
+          VERSION=${VERSION//\'/}
           echo "Detected version: $VERSION"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "::set-output name=VERSION::$VERSION"
