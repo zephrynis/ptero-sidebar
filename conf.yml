@@ -6,8 +6,8 @@ info:
   version: "1.0"
   target: "beta-2024-12"
   author: "Zephrynis"
-  icon: ""
-  website: ""
+  icon: "public/icon.png"
+  website: "https://github.com/zephrynis/ptero-sidebar"
 
 admin:
   view: "view.blade.php"
