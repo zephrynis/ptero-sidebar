@@ -21,20 +21,20 @@ jobs:
           VERSION=${VERSION//\"/}
           VERSION=${VERSION//\'/}
           echo "Detected version: $VERSION"
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "::set-output name=VERSION::$VERSION"
 
       - name: Create zip of project files
         run: |
-          zip -r sidebar-${{ env.VERSION }}.blueprint . -x "*.git*"
+          zip -r sidebar-${{ steps.get_version.outputs.VERSION }}.blueprint . -x "*.git*"
+          ls -l sidebar-${{ steps.get_version.outputs.VERSION }}.blueprint  # Debug: list the created file
 
       - name: Create GitHub Release and Upload Asset
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "v${{ env.VERSION }}"
-          release_name: "Release v${{ env.VERSION }}"
-          body: "Automated release based on version ${{ env.VERSION }}"
+          tag: "v${{ steps.get_version.outputs.VERSION }}"
+          release_name: "Release v${{ steps.get_version.outputs.VERSION }}"
+          body: "Automated release based on version ${{ steps.get_version.outputs.VERSION }}"
           draft: false
           prerelease: false
-          assets: sidebar-${{ env.VERSION }}.blueprint
+          assets: sidebar-${{ steps.get_version.outputs.VERSION }}.blueprint
